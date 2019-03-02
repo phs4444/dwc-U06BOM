@@ -179,7 +179,7 @@ function showHomePage() {
             img.setAttribute('src', pro._image);
             img.setAttribute('alt', pro._title);
             img.style.width = '15em';
-
+         
             img.style.cursor = 'pointer';
             divCol.appendChild(img);
             divRow.appendChild(divCol);
@@ -545,7 +545,7 @@ function showProduction(production) {
     let img = document.createElement('img');
     img.classList.add('img-thumbnail', 'card-text');
     img.setAttribute('src', elemento.value._image);
-    img.setAttribute('width', '400px');
+    img.setAttribute('width','400px');
     img.style.objectFit = 'cover';
     img.setAttribute('alt', elemento.value._title);
     divImg.appendChild(img);
@@ -571,17 +571,88 @@ function showProduction(production) {
         pSynopsis.appendChild(pSynoTextNode);
         divDatos.appendChild(pSynopsis);
     }
+    let collapseButton = document.createElement('button');
+    collapseButton.setAttribute('type', 'button');
+    collapseButton.classList.add('btn', 'btn-dark', 'mb-3');
+    collapseButton.setAttribute('data-toggle', 'collapse');
+    collapseButton.setAttribute('data-target', '#resources');
+    let collapseButtonTextNode = document.createTextNode('Recursos');
+    collapseButton.appendChild(collapseButtonTextNode);
 
-    //pintamos el botón de recursos con el evento de abrir ventana de recursos
-    let resourceButton = document.createElement('button');
-    resourceButton.setAttribute('type', 'button');
-    resourceButton.classList.add('btn', 'btn-dark', 'mb-3');
-    resourceButton.addEventListener('click', ()=>openResourceWindow(elemento));
-    let resourceButtonTextNode = document.createTextNode('Recursos');
-    resourceButton.appendChild(resourceButtonTextNode);
-    divDatos.appendChild(resourceButton);
+    let divResources = document.createElement('div');
+    divResources.classList.add('collapse');
+    divResources.setAttribute('id', 'resources');
 
+    if (elemento.value instanceof Movie && elemento.value._resource) {
+        divResources.classList.add('alert', 'alert-dark');
+        let h6 = document.createElement('h6');
+        let h6TextNode = document.createTextNode('Recursos de la producción: ');
+        h6.appendChild(h6TextNode);
+        divResources.appendChild(h6);
+        let pDuration = document.createElement('p');
+        let pTextNode = document.createTextNode('Duración: ' + elemento.value._resource._duration + ' minutos.');
+        pDuration.appendChild(pTextNode);
+        divResources.appendChild(pDuration);
+        let pLink = document.createElement('p');
+        let pLinkTextNode = document.createTextNode('Descarga: ');
+        pLink.appendChild(pLinkTextNode);
+        let a = document.createElement('a');
+        a.classList.add('alert-link');
+        a.setAttribute('href', 'https://www.premiosgoya.com/33-edicion/');
+        let aTextNode = document.createTextNode(elemento.value._resource._link);
+        a.appendChild(aTextNode);
+        pLink.appendChild(a);
+        divResources.appendChild(pLink);
 
+        let resourceAudios = elemento.value._resource._audios;
+        if (resourceAudios) {
+            let pAudios = document.createElement('p');
+            let pAudiosTextNode = document.createTextNode('Audios disponibles: ' + resourceAudios);
+            pAudios.appendChild(pAudiosTextNode);
+            divResources.appendChild(pAudios);
+        }
+        let resourceSubtitulos = elemento.value._resource._subtitles;
+        if (resourceSubtitulos) {
+            let pSubtitulos = document.createElement('p');
+            let pSubtitulosTextNode = document.createTextNode('Subtítulos disponibles: ' + resourceSubtitulos);
+            pSubtitulos.appendChild(pSubtitulosTextNode);
+            divResources.appendChild(pSubtitulos);
+        }
+        divDatos.appendChild(collapseButton);
+        divDatos.appendChild(divResources);
+    }
+
+    let anotherCollapseButton = document.createElement('button');
+    anotherCollapseButton.setAttribute('type', 'button');
+    anotherCollapseButton.classList.add('btn', 'btn-dark', 'mb-3');
+    anotherCollapseButton.setAttribute('data-toggle', 'collapse');
+    anotherCollapseButton.setAttribute('data-target', '#temporadas');
+    let anotherCollapseButtonTextNode = document.createTextNode('Temporadas');
+    anotherCollapseButton.appendChild(anotherCollapseButtonTextNode);
+
+    let divSeasons = document.createElement('div');
+    divSeasons.classList.add('collapse');
+    divSeasons.setAttribute('id', 'temporadas');
+    if (elemento.value instanceof Serie && elemento.value._seasons.length) {
+        elemento.value._seasons.forEach(el => {
+            let pSeasons = document.createElement('p');
+            let pSeasonsText = el._title + ': episodios: ' + el.episodes[0].title;
+            let pSeasonsTextNode = document.createTextNode(pSeasonsText);
+            pSeasons.appendChild(pSeasonsTextNode);
+            divSeasons.appendChild(pSeasons);
+        })
+        divDatos.appendChild(anotherCollapseButton);
+        divDatos.appendChild(divSeasons);
+    }
+    let divLocations = document.createElement('div');
+    let locations = elemento.value._locations;
+    if (locations) {
+        let pLocations = document.createElement('p');
+        let pLocationsTextNode = document.createTextNode('Localizaciones: ' + locations);
+        pLocations.appendChild(pLocationsTextNode);
+        divLocations.appendChild(pLocations);
+    }
+    divDatos.appendChild(divLocations);
     let h5Casting = document.createElement('h5');
     let h5CastTextNode = document.createTextNode('Casting:');
     h5Casting.appendChild(h5CastTextNode);
