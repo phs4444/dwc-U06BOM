@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Obligatorias -->
+    <title>Práctica UT05.3 Video en Streaming pintando DOM</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="phs4444">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Personalizado -->
+    <link rel="stylesheet" href="css/mi_css.css">
+</head>
+
+<body>
+    <header class="container-fluid">
+        <div class="container bg-secondary d-flex justify-content-between">
+            <a href="VStreaming.html"><img src="img/MVS-Logo.png" height="50" alt="logo"></a>
+            <div class="dropdown">
+                <button type="button" id="ibi" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Ingresar
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Registrarse</a>
+                    <a class="dropdown-item" href="#">Recordar Contraseña</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Menú con categorías, actores y directores  -->
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light  sticky-top">
+        <a class="navbar-brand" href="VStreaming.html">VideoSystem</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" id="principal" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-hover="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Categorías
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="boton-actores" href="#" tabindex="-1" aria-disabled="true">Actores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="boton-directores" href="#" tabindex="-1" aria-disabled="true">Directores</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container-fluid">
+        <div id="contenedor-principal" class="container-fluid">
+            <h2>Categoría<span class="badge badge-secondary">Terror</span></h2>
+
+        </div>
+        <div class="container text-center">
+            <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Open modal
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modal Heading</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            Modal body..
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ... -->
+
+    </main>
+
+    <footer class="container">
+        <p class="text-center">
+            <a id="mibtn" href="#mibtn">&copy; Imágenes y contenido de sus respectivos autores</a>
+        </p>
+        
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- Personalizado -->
+
+
+    <script src="js/BaseException.js"></script>
+    <script src="js/ObjectsVS.js"></script>
+    <script src="js/VStreaming.js"></script>
+    <!-- <script src="js/testVStreaming.js"></script> -->
+    <script src="js/DOM.js"></script>
+</body>
+
+</html>
