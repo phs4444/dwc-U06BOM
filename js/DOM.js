@@ -576,7 +576,7 @@ function showProduction(production) {
     let resourceButton = document.createElement('button');
     resourceButton.setAttribute('type', 'button');
     resourceButton.classList.add('btn', 'btn-dark', 'mb-3');
-    resourceButton.addEventListener('click', ()=>openResourceWindow(elemento));
+    resourceButton.addEventListener('click', () => openResourceWindow(elemento.value));
     let resourceButtonTextNode = document.createTextNode('Recursos');
     resourceButton.appendChild(resourceButtonTextNode);
     divDatos.appendChild(resourceButton);
